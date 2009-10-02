@@ -1,0 +1,11 @@
+log/*.log
+db/*.sqlite3
+config/database.yml
+coverage
+coverage.data
+tmp
+.DS_Store
+tags
+tmtags
+._*
+TAGS
