@@ -1,8 +1,20 @@
 <% semantic_form_for @reminder do |form| %>
 
-  <%= form.inputs %>
+  <% form.inputs do %>
+    <%= form.input :description, :input_html => { :size => 40, :width => 40 }%>
+    <%= form.input :remind_at %>
+  <% end %>
   <%= form.buttons %>
 
 <% end %>
 
-<h2>All your reminders below</h2>
+<h2>Upcoming Reminders</h2>
+
+<ul>
+<% @reminders.each do |reminder| %>
+  <li>
+    <%= reminder.description %>
+    <%= reminder.remind_at %>
+  </li>
+<% end %>
+</ul>

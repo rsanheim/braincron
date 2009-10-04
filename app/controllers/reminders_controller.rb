@@ -1,11 +1,8 @@
 class RemindersController < ApplicationController
-  
-  def new
-    @reminder = Reminder.new
-  end
+  before_filter :authenticate
   
   def create
-    @reminder = Reminder.new(params[:reminder])
+    @reminder = current_user.reminders.new(params[:reminder])
     if @reminder.save
       redirect_to reminders_path
     else
@@ -14,6 +11,7 @@ class RemindersController < ApplicationController
   end
   
   def index
-    @reminder = Reminder.new
+    @reminder = current_user.reminders.new
+    @reminders = current_user.reminders.upcoming
   end
 end

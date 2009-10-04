@@ -3,9 +3,9 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
+  if RUBY_VERSION >= "1.9"
+    config.gem 'antage-postgres', :lib => false
+  end
   config.gem "thoughtbot-clearance", :lib => 'clearance', :source  => 'http://gems.github.com', :version => '0.8.2'
   config.gem "justinfrench-formtastic", :lib => 'formtastic', :source  => 'http://gems.github.com'
   # Only load the plugins named here, in the order given (default is alphabetical).

@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'factories'
+require 'support/clearance'
 
 def not_in_editor?
   ['TM_MODE', 'EMACS', 'VIM'].all? { |k| !ENV.has_key?(k) }
@@ -15,5 +16,7 @@ Micronaut.configure do |config|
   config.mock_with :mocha
   config.filter_run :focused => true
   config.alias_example_to :fit, :focused => true
+  config.include Clearance::Shoulda::Helpers
+  
   config.rails.enable_reasonable_defaults!
 end
