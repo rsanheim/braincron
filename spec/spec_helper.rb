@@ -10,6 +10,7 @@ Mocha::Configuration.prevent(:stubbing_method_unnecessarily)
 Mocha::Configuration.prevent(:stubbing_non_existent_method) 
 
 Micronaut.configure do |config|
+  config.color_enabled = true
   config.formatter = :progress
   config.mock_with :mocha
   config.filter_run :focused => true
