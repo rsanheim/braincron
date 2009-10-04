@@ -27,3 +27,6 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+HOST = "localhost"
+DO_NOT_REPLY = "donotreply@example.com"
