@@ -6,6 +6,7 @@ class RemindersController < ApplicationController
   def create
   end
   
-  def list
+  def index
+    render :text => "hi"
   end
 end
