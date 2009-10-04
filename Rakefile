@@ -35,4 +35,4 @@ namespace :spec do
 end
 
 Rake::Task[:default].clear
-task :default => "spec:all"
+task :default => ["cucumber", "spec:all"]

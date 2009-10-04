@@ -13,7 +13,7 @@ ActiveRecord::Schema.define(:version => 20091004034239) do
 
   create_table "reminders", :force => true do |t|
     t.string   "description", :null => false
-    t.time     "remind_at"
+    t.datetime "remind_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
