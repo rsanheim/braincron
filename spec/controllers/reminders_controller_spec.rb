@@ -21,4 +21,13 @@ describe RemindersController do
       response.should render_template('reminders/new')
     end
   end
+  
+  describe "index" do
+    it "should set new reminder to prep for create" do
+      reminder = Factory.build(:reminder)
+      Reminder.expects(:new).returns(reminder)
+      get :index
+      assigns(:reminder).should == reminder
+    end
+  end
 end

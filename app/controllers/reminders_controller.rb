@@ -14,6 +14,6 @@ class RemindersController < ApplicationController
   end
   
   def index
-    
+    @reminder = Reminder.new
   end
 end
