@@ -35,4 +35,9 @@ namespace :spec do
 end
 
 Rake::Task[:default].clear
-task :default => ["cucumber", "spec:all"]
+
+if RUBY_VERSION < "1.9"
+  task :default => ["cucumber", "spec:coverage"]
+else
+  task :default => ["spec:all"]
+end
