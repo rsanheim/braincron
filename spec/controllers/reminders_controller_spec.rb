@@ -10,7 +10,7 @@ describe RemindersController do
     
     it "should redirect to index on success" do
       sign_in
-      post :create, :reminder => {:description => "foo"}
+      post :create, :reminder => {:description => "foo", :remind_at => 2.days.from_now}
       response.should redirect_to(reminders_url)
     end
     
