@@ -36,4 +36,27 @@ describe Reminder do
       Reminder.need_processing.should == expected
     end
   end
+  
+  describe "deliver" do
+    it "should create options hash for reminder" do
+      user = Factory(:email_confirmed_user, :email => "rob@example.com")
+      reminder = Factory(:reminder, :description => "water the plants", :remind_at => 3.days.ago, :user => user)
+      options = {
+        :config => { :to => "rob@example.com", :from => DO_NOT_REPLY },
+        :message => { :summary => "water the plants" }
+      }
+      reminder.to_hash.should == options
+    end
+    
+    it "should send message to chatterbox" do
+      user = Factory(:email_confirmed_user, :email => "rob@example.com")
+      reminder = Factory(:reminder, :description => "water the plants", :remind_at => 3.days.ago, :user => user)
+      options = {
+        :config => { :to => "rob@example.com", :from => DO_NOT_REPLY },
+        :message => { :summary => "water the plants" }
+      }
+      Chatterbox::Email.expects(:deliver).with(options)
+      reminder.deliver
+    end
+  end
 end

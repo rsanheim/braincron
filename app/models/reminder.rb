@@ -15,4 +15,16 @@ class Reminder < ActiveRecord::Base
     parsed_time = Chronic.parse(time_or_string)
     super(parsed_time)
   end
+  
+  def to_hash
+    options = {
+      :config => { :to => user.email, :from => DO_NOT_REPLY },
+      :message => { :summary => description }
+    }
+  end
+  
+  def deliver
+    Chatterbox::Email.deliver(to_hash)
+  end
+  
 end
