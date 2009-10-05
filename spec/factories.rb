@@ -15,4 +15,5 @@ end
 Factory.define :reminder do |a|
   a.description "foo"
   a.remind_at { 2.days.from_now }
+  a.association :user
 end

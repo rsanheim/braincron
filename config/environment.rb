@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
   config.gem "justinfrench-formtastic", :lib => 'formtastic', :source  => 'http://gems.github.com'
   config.gem "relevance-log_buddy", :lib => false
   
-  config.frameworks -= [ :active_resource, :action_mailer ]
+  config.frameworks -= [:active_resource]
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

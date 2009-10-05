@@ -21,4 +21,19 @@ describe Reminder do
       reminder.remind_at.should == time
     end
   end
+  
+  describe "need_processing" do
+    it "should return reminders scheduled in past that haven't been submitted/processed, oldest first" do
+      not_expected = []
+      not_expected << Factory(:reminder, :remind_at => 2.minutes.from_now)
+      not_expected << Factory(:reminder, :remind_at => 1.day.ago, :submitted_at => 1.minute.ago)
+      not_expected << Factory(:reminder, :remind_at => 1.day.ago, :submitted_at => 10.minutes.ago, :processed_at => 5.minutes.ago)
+      
+      expected = []
+      expected << Factory(:reminder, :remind_at => 3.days.ago)
+      expected << Factory(:reminder, :remind_at => 20.minutes.ago)
+      expected << Factory(:reminder, :remind_at => 1.minutes.ago)
+      Reminder.need_processing.should == expected
+    end
+  end
 end
