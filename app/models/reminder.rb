@@ -24,7 +24,7 @@ class Reminder < ActiveRecord::Base
   end
   
   def deliver
-    Chatterbox::Email.deliver(to_hash)
+    Chatterbox.handle_notice(to_hash)
   end
   
 end

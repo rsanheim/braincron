@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   config.gem "thoughtbot-clearance", :lib => 'clearance', :source  => 'http://gems.github.com', :version => '0.8.2'
   config.gem "justinfrench-formtastic", :lib => 'formtastic', :source  => 'http://gems.github.com'
   config.gem "relevance-log_buddy", :lib => false
-  config.gem "chatterbox"
+  config.gem "chatterbox", :source => "http://gemcutter.org"
   config.gem "chatterbox-email", :lib => "chatterbox/email"
   
   config.frameworks -= [:active_resource]
@@ -22,3 +22,7 @@ end
 
 HOST = "localhost"
 DO_NOT_REPLY = "donotreply@example.com"
+
+Chatterbox::Publishers.register do |notice|
+  Chatterbox::Email.deliver(notice)
+end
