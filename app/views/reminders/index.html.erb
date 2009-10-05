@@ -2,7 +2,7 @@
 
   <% form.inputs do %>
     <%= form.input :description, :input_html => { :size => 40, :width => 40 }%>
-    <%= form.input :remind_at %>
+    <%= form.input :remind_at, :as => :string %>
   <% end %>
   <%= form.buttons %>
 
@@ -10,11 +10,12 @@
 
 <h2>Upcoming Reminders</h2>
 
+<i>Current time is <%= Time.zone.now %></i>
 <ul>
 <% @reminders.each do |reminder| %>
   <li>
     <%= reminder.description %>
-    <%= reminder.remind_at %>
+    <%= reminder.remind_at.to_s %>
   </li>
 <% end %>
 </ul>

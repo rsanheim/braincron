@@ -2,6 +2,8 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'factories'
 require 'support/clearance'
+require 'log_buddy'
+LogBuddy.init
 
 def not_in_editor?
   ['TM_MODE', 'EMACS', 'VIM'].all? { |k| !ENV.has_key?(k) }

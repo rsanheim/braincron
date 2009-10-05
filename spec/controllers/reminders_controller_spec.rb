@@ -14,10 +14,10 @@ describe RemindersController do
       response.should redirect_to(reminders_url)
     end
     
-    it "should render new if there are errors" do
+    it "should render index if there are errors" do
       sign_in
       post :create, :reminder => {:description => ""}
-      response.should render_template('reminders/new')
+      response.should render_template('reminders/index')
     end
   end
   

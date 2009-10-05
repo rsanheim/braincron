@@ -6,7 +6,8 @@ class RemindersController < ApplicationController
     if @reminder.save
       redirect_to reminders_path
     else
-      render :action => :new
+      @reminders = current_user.reminders.upcoming
+      render :action => :index
     end
   end
   

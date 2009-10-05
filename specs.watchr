@@ -30,6 +30,7 @@ end
 # --------------------------------------------------
 # Watchr Rules
 # --------------------------------------------------
+watch('^config/(.*)\.rb') { run_all_tests }
 watch('^spec/(.*)_spec\.rb'  )   { |m| run_test_matching(m[1]) }
 watch('^app/(.*)\.rb'               )   { |m| run_test_matching(m[1]) }
 watch('^lib/(.*)\.rb'               )   { |m| run_test_matching(m[1]) }
