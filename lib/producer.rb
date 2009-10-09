@@ -15,8 +15,10 @@ class Producer
   end
 
   def self.run
-    logger.debug { "#{self.name} started..."}
-    Reminder.need_processing.each do |reminder|
+    logger.info { "#{self.name} started..."}
+    reminders = Reminder.need_processing
+    logger.info { "Found #{reminders.size} reminders that need processing" }
+    reminders.each do |reminder|
       publish(reminder)
     end
   end

@@ -59,4 +59,10 @@ describe Reminder do
       reminder.deliver
     end
   end
+  
+  describe "to_hash" do
+    it "should include the reminder id" do
+      fail "do me!"
+    end
+  end
 end
