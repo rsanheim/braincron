@@ -18,6 +18,7 @@ class Reminder < ActiveRecord::Base
   
   def to_hash
     options = {
+      :reminder_id => id,
       :config => { :to => user.email, :from => DO_NOT_REPLY },
       :message => { :summary => description }
     }

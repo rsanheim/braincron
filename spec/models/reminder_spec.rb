@@ -38,20 +38,11 @@ describe Reminder do
   end
   
   describe "deliver" do
-    it "should create options hash for reminder" do
-      user = Factory(:email_confirmed_user, :email => "rob@example.com")
-      reminder = Factory(:reminder, :description => "water the plants", :remind_at => 3.days.ago, :user => user)
-      options = {
-        :config => { :to => "rob@example.com", :from => DO_NOT_REPLY },
-        :message => { :summary => "water the plants" }
-      }
-      reminder.to_hash.should == options
-    end
-    
     it "should send message to chatterbox" do
       user = Factory(:email_confirmed_user, :email => "rob@example.com")
       reminder = Factory(:reminder, :description => "water the plants", :remind_at => 3.days.ago, :user => user)
       options = {
+        :reminder_id => reminder.id,
         :config => { :to => "rob@example.com", :from => DO_NOT_REPLY },
         :message => { :summary => "water the plants" }
       }
@@ -61,8 +52,19 @@ describe Reminder do
   end
   
   describe "to_hash" do
+    it "should include message and configuration options" do
+      user = Factory(:email_confirmed_user, :email => "rob@example.com")
+      reminder = Factory(:reminder, :description => "water the plants", :remind_at => 3.days.ago, :user => user)
+      options = {
+        :config => { :to => "rob@example.com", :from => DO_NOT_REPLY },
+        :message => { :summary => "water the plants" }
+      }
+      reminder.to_hash.should include(options)# == options
+    end
+    
     it "should include the reminder id" do
-      fail "do me!"
+      reminder = Factory(:reminder)
+      reminder.to_hash.should include(:reminder_id => reminder.id)
     end
   end
 end
