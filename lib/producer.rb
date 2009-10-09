@@ -17,11 +17,12 @@ class Producer
   def self.run
     logger.debug { "#{self.name} started..."}
     Reminder.need_processing.each do |reminder|
-      submit(reminder)
+      publish(reminder)
     end
   end
   
-  def self.submit(msg)
-    logger.debug { "Submitting reminder: #{reminder.id} msg: #{msg.inspect}"}
+  def self.publish(message)
+    logger.debug { "Submitting reminder: #{reminder.id} msg: #{message.inspect}"}
+    RosettaQueue::Producer.publish(:requests, message)
   end
 end
