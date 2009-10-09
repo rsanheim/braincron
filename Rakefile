@@ -23,7 +23,7 @@ namespace :spec do
   Micronaut::RakeTask.new :coverage => ["db:test:prepare"] do |t|
     t.pattern = "spec/**/*_spec.rb"
     t.rcov = true 
-    t.rcov_opts = %[--exclude "features/*,spec/*,gems/*,lib/authenticated*,db/*,/Library/Ruby/*,config/*" --rails --text-summary --sort coverage --aggregate coverage.data]
+    t.rcov_opts = %[-Ispec --exclude "features/*,gems/*,lib/authenticated*,db/*,/Library/Ruby/*,config/*" --rails --text-summary --sort coverage --aggregate coverage.data]
   end
   
   desc "Run all specs"
