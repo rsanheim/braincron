@@ -19,6 +19,7 @@ def run_test_matching(thing_to_match)
 end
 
 def run(files_to_run)
+  clear_int_watcher
   puts("Running: #{files_to_run}")
   system("ruby -Ispec #{files_to_run}")
 end
@@ -39,6 +40,11 @@ watch('^features/(.*)') { system "cucumber --tags @fit features/other/" }
 # --------------------------------------------------
 # Signal Handling
 # --------------------------------------------------
+
+def clear_int_watcher
+  @sent_an_int = nil
+end
+
 Signal.trap 'INT' do
   if @sent_an_int then      
     puts "   A second INT?  Ok, I get the message.  Shutting down now."
