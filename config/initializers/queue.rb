@@ -6,9 +6,9 @@ QUEUE_CONFIG = YAML.load_file(config_file).fetch(Rails.env) do
 end
 
 RosettaQueue::Destinations.define do |queue|
-  queue.map :requests, "/braincron/zeus_requests"
-  queue.map :results, "/braincron/zeus_results"
-  queue.map :exceptions, "/braincron/zeus_exceptions"
+  queue.map :requests, "/queue/braincron/requests"
+  queue.map :results, "/queue/braincron/results"
+  queue.map :exceptions, "/queue/braincron/exceptions"
 end
 
 RosettaQueue::Adapter.define do |a|
