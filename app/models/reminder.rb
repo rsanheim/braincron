@@ -9,7 +9,7 @@ class Reminder < ActiveRecord::Base
   def self.need_processing
     past_or_now.all(:conditions => ["submitted_at is null and processed_at is null"])
   end
-
+  
   def remind_at=(time_or_string)
     return super if Time === time_or_string
     parsed_time = Chronic.parse(time_or_string)

@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   config.gem "relevance-log_buddy", :lib => false
   config.gem "chatterbox", :source => "http://gemcutter.org"
   config.gem "chatterbox-email", :lib => "chatterbox/email"
+  config.gem "rosetta_queue", :lib => false
   
   config.frameworks -= [:active_resource]
 
