@@ -1,4 +1,4 @@
-require 'actionmailer'
+require 'action_mailer'
 
 module Chatterbox
   class Mailer < ActionMailer::Base
