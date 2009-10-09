@@ -34,7 +34,7 @@ files:
 - rails/init.rb
 - spec/formtastic_spec.rb
 - spec/test_helper.rb
-has_rdoc: false
+has_rdoc: true
 homepage: http://github.com/justinfrench/formtastic/tree/master
 licenses: []
 

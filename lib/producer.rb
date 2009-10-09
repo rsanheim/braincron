@@ -21,7 +21,8 @@ class Producer
     end
   end
   
-  def self.publish(message)
+  def self.publish(reminder)
+    message = reminder.to_hash
     logger.debug { "Submitting reminder: #{reminder.id} msg: #{message.inspect}"}
     RosettaQueue::Producer.publish(:requests, message)
   end
