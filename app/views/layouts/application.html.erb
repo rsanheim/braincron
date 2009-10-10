@@ -23,9 +23,13 @@
     
     
     <%= yield %>
+
+    <p>
+      <%= link_to "Sign out", sign_out_path if signed_in? %>
+    </p>
+		
   </div>
 
-		<%= link_to "Sign out", sign_out_path if signed_in? %>
 </body>
 
 </html>

@@ -8,14 +8,15 @@
 
 <% end %>
 
+<p><i>Current time is <%= Time.zone.now %></i></p>
+
 <h2>Upcoming Reminders</h2>
 
-<i>Current time is <%= Time.zone.now %></i>
 <ul>
 <% @reminders.each do |reminder| %>
   <li>
     <%= reminder.description %>
-    <%= reminder.remind_at.to_s %>
+    <%= reminder.remind_at.to_s(:long) %>
   </li>
 <% end %>
 </ul>
