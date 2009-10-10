@@ -5,7 +5,7 @@ config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 
-config.action_mailer.delivery_method = :smtp
+config.action_mailer.delivery_method = :sendmail
 
 # See everything in the log (default is :info)
 config.log_level = :debug
@@ -25,4 +25,4 @@ config.log_level = :debug
 # Enable threaded mode
 # config.threadsafe!
 
-ActionMailer::Base.smtp_settings = YAML.load_file(Rails.root.join("config", "smtp.yml"))
+# ActionMailer::Base.smtp_settings = YAML.load_file(Rails.root.join("config", "smtp.yml"))
