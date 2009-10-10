@@ -12,8 +12,11 @@ form.formtastic label {
 	font-size: 2em;
 	color:#657788;
 	display:block;
-	font-family:Arial,Helvetica,Verdana,sans-serif;
+	font-family: "Helvetica Neue", helvetica;
 	font-size:18px;
 	margin-bottom:5px;
 }
-form.formtastic input, form.formtastic textarea, form.formtastic select { display: block; font-size:3em; }
+form.formtastic input, form.formtastic textarea, form.formtastic select { display: block; font-size:2.5em; font-family: Georgia,Times,"Times New Roman",serif; }
+form.formtastic input#session_submit {
+	font-size: 1.75em; padding: 2em; width: 125%; height: 115%;
+}
