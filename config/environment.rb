@@ -22,9 +22,6 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
 end
 
-HOST = "localhost"
-DO_NOT_REPLY = "donotreply@example.com"
-
 Chatterbox::Publishers.register do |notice|
   Chatterbox::Email.deliver(notice)
 end
