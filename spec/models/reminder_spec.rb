@@ -67,4 +67,21 @@ describe Reminder do
       reminder.to_hash.should include(:reminder_id => reminder.id)
     end
   end
+  
+  describe "processed?" do
+    it "should be true if processed_at timestamp is set" do
+      reminder = Factory(:reminder, :processed_at => nil)
+      reminder.should_not be_processed
+      reminder.processed_at = Time.zone.now
+      reminder.should be_processed
+    end
+  end
+  
+  describe "processed!" do
+    it "should set the procossed_at timestamp" do
+      reminder = Factory(:reminder)
+      reminder.should_not be_processed
+      reminder.processed!
+    end
+  end
 end

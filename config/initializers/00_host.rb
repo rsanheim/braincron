@@ -6,4 +6,4 @@ else
 end
 
 HOST = host
-DO_NOT_REPLY = "donotreply@#{HOST}.com"
+DO_NOT_REPLY = "braincron@#{HOST}.com"

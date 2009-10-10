@@ -26,6 +26,8 @@ class Producer
   def self.publish(reminder)
     message = reminder.to_hash
     logger.debug { "Sending reminder: #{reminder.id} msg: #{message.inspect}"}
-    Chatterbox.handle_notice(message)
+    if Chatterbox.handle_notice(message)
+      reminder.processed!
+    end
   end
 end

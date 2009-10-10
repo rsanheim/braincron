@@ -19,7 +19,7 @@ describe Producer do
     Producer.run
   end
   
-  it "should publish message to requests queue" do
+  pending "should publish message to requests queue" do
     RosettaQueue::Producer.expects(:publish).with(:requests, {:test => "message"})
     Producer.publish({:test => "message"})
   end

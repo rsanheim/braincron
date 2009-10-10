@@ -28,4 +28,11 @@ class Reminder < ActiveRecord::Base
     Chatterbox.handle_notice(to_hash)
   end
   
+  def processed?
+    !!processed_at
+  end
+  
+  def processed!
+    update_attribute :processed_at, Time.zone.now
+  end
 end
