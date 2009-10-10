@@ -25,7 +25,7 @@ class Producer
   
   def self.publish(reminder)
     message = reminder.to_hash
-    logger.debug { "Submitting reminder: #{reminder.id} msg: #{message.inspect}"}
-    RosettaQueue::Producer.publish(:requests, message)
+    logger.debug { "Sending reminder: #{reminder.id} msg: #{message.inspect}"}
+    Chatterbox.handle_notice(message)
   end
 end
